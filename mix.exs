@@ -11,13 +11,6 @@ defmodule Viex.Mixfile do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       package: package(),
-      test_coverage: [tool: ExCoveralls],
-      preferred_cli_env: [
-        coveralls: :test,
-        "coveralls.detail": :test,
-        "coveralls.html": :test,
-        "coveralls.semaphore": :test
-      ],
 
       # Documentation
       name: "Viex",
@@ -35,14 +28,13 @@ defmodule Viex.Mixfile do
 
   defp deps do
     [
-      {:httpoison, "~> 0.11"},
+      {:httpoison, "~> 1.5"},
       {:floki, "~> 0.13"},
       {:sweet_xml, "~> 0.6.5"},
-      {:exvcr, "~> 0.8", only: :test},
-      {:excoveralls, "~> 0.5", only: :test},
+      {:exvcr, github: "blendmedia/exvcr", ref: "5258f4f1f866f128a19e8ce5ff5e22e6198c2a18", only: :test},
       {:ex_doc, "~> 0.14", only: :dev},
       {:earmark, "~> 1.1", only: :dev},
-      {:credo, "~> 0.5", only: [:dev, :test]},
+      {:credo, "~> 1.0.0", only: [:dev, :test], runtime: false},
       {:mox, "~> 0.4", only: [:test]}
     ]
   end
